@@ -1,0 +1,5 @@
+# Carpeta de trabajo local — nunca al repositorio
+local/
+
+# macOS
+.DS_Store
