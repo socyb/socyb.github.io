@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarjeta de presentación · Jorge Cardiel</title>
+<meta name="description" content="Tarjeta de presentación de Jorge Cardiel Herrera — UNAM.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #f4ead5;
+  --paper-deep: #ebe0c4;
+  --ink: #231912;
+  --ink-soft: #4a3828;
+  --burgundy: #7a1e2a;
+  --burgundy-deep: #5a1620;
+  --gold: #b8893a;
+  --rule: #8a6d45;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  min-height: 100vh;
+  font-family: 'Crimson Pro', Georgia, serif;
+  background: #1a120c;
+  color: var(--ink);
+  background-image:
+    radial-gradient(circle at 30% 20%, rgba(184, 137, 58, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 70% 80%, rgba(122, 30, 42, 0.10) 0%, transparent 50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.25rem;
+  gap: 1.5rem;
+}
+
+/* Stage that emerges */
+.stage {
+  perspective: 1400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: emerge 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes emerge {
+  from { opacity: 0; transform: translateY(20px) scale(0.94); filter: blur(4px); }
+  to   { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
+/* === BUSINESS CARD ===
+   Universal size: 3.5" × 2" → at 110dpi ≈ 385×220px (we use 720×412 for clarity) */
+.card {
+  width: min(720px, 92vw);
+  aspect-ratio: 1.75 / 1;
+  background: var(--paper);
+  background-image:
+    radial-gradient(circle at 18% 25%, rgba(184, 137, 58, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 82% 75%, rgba(122, 30, 42, 0.06) 0%, transparent 45%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(74, 56, 40, 0.018) 2px,
+      rgba(74, 56, 40, 0.018) 4px
+    );
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.05) inset,
+    0 30px 60px -20px rgba(0,0,0,0.6),
+    0 12px 24px -10px rgba(0,0,0,0.45);
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.55fr 1fr;
+  color: var(--ink);
+}
+
+/* Inner double rule (engraved frame) */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 10px; left: 10px; right: 10px; bottom: 10px;
+  border: 1px solid var(--rule);
+  opacity: 0.45;
+  pointer-events: none;
+  border-radius: 2px;
+}
+
+/* Subtle paper grain */
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* LEFT — identity */
+.card .left {
+  padding: 2.4rem 1.6rem 2.2rem 2.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+
+.card .eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--burgundy);
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 1.1rem;
+}
+.card .eyebrow::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+  opacity: 0.7;
+}
+
+.card .name {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: clamp(2rem, 4.5vw, 2.85rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  font-variation-settings: 'opsz' 144;
+}
+.card .name em { font-style: italic; color: var(--burgundy); font-weight: 400; }
+.card .name .pre {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-style: normal;
+  font-size: 0.78rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 0.55rem;
+}
+
+.card .roles {
+  margin-top: 1.25rem;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.08rem;
+  line-height: 1.3;
+  color: var(--ink-soft);
+}
+.card .roles li {
+  position: relative;
+  padding-left: 1.15rem;
+}
+.card .roles li::before {
+  content: '❦';
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  font-style: normal;
+  color: var(--gold);
+  font-size: 0.85rem;
+}
+
+.card .contact-block {
+  margin-top: auto;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft);
+}
+.card .contact-block .row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+.card .contact-block .row svg {
+  width: 1.05rem;
+  height: 1.05rem;
+  stroke: var(--burgundy);
+  fill: none;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+.card .contact-block .row a,
+.card .contact-block .row span.val {
+  color: var(--ink);
+  word-break: break-all;
+}
+
+/* RIGHT — QR + crest */
+.card .right {
+  background: var(--paper-deep);
+  border-left: 1px dashed var(--rule);
+  padding: 1.9rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  gap: 0.9rem;
+}
+
+.card .crest {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--rule);
+}
+
+.card .qr-wrap {
+  background: var(--paper);
+  padding: 10px;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card .qr-wrap svg,
+.card .qr-wrap canvas,
+.card .qr-wrap img {
+  display: block;
+  width: 170px;
+  height: 170px;
+}
+
+.card .qr-caption {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.card .qr-caption strong {
+  color: var(--burgundy);
+  font-weight: 700;
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 0.78rem;
+}
+
+.card .seal {
+  position: absolute;
+  bottom: 0.7rem;
+  right: 0.95rem;
+  font-family: 'Fraunces', serif;
+  font-size: 1.15rem;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+  z-index: 2;
+}
+
+/* === ACTIONS === */
+.actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.actions button,
+.actions a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--paper);
+  background: transparent;
+  border: 1px solid var(--paper);
+  padding: 0.65rem 1.1rem;
+  border-radius: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.2s, color 0.2s;
+}
+.actions button:hover,
+.actions a:hover {
+  background: var(--paper);
+  color: var(--ink);
+}
+.actions svg {
+  width: 0.9rem;
+  height: 0.9rem;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.foot {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(244, 234, 213, 0.5);
+  margin-top: 0.2rem;
+}
+.foot a {
+  color: rgba(244, 234, 213, 0.7);
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(244, 234, 213, 0.4);
+}
+.foot a:hover { color: var(--paper); }
+
+/* Responsive — stack on small screens (screen only, never in print) */
+@media screen and (max-width: 640px) {
+  .card {
+    aspect-ratio: auto;
+    grid-template-columns: 1fr;
+    width: min(420px, 95vw);
+  }
+  .card .left { padding: 1.6rem 1.4rem 1.2rem; }
+  .card .right {
+    border-left: none;
+    border-top: 1px dashed var(--rule);
+    padding: 1.3rem 1rem 1.5rem;
+    gap: 0.8rem;
+  }
+  .card .qr-wrap svg,
+  .card .qr-wrap canvas,
+  .card .qr-wrap img { width: 110px; height: 110px; }
+  .card .seal { display: none; }
+}
+
+/* Print — real business-card size (3.5in × 2in) on its own page with margin */
+@page {
+  size: 4in 2.5in;
+  margin: 0.25in;
+}
+@media print {
+  html, body {
+    background: #ffffff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 3.5in !important;
+    height: 2in !important;
+    min-height: 0 !important;
+    display: block !important;
+    overflow: hidden !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    background-image: none !important;
+  }
+  body * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+
+  .stage {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+    animation: none !important;
+    perspective: none !important;
+    width: 3.5in !important;
+    height: 2in !important;
+  }
+  .actions, .foot { display: none !important; }
+
+  /* Reset any responsive stacking and force two-column horizontal layout */
+  .card {
+    width: 3.5in !important;
+    height: 2in !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    aspect-ratio: auto !important;
+    box-shadow: none !important;
+    border-radius: 2pt !important;
+    border: 0.5pt solid #8a6d45 !important;
+    background: #f4ead5 !important;
+    background-image: none !important;
+    page-break-after: avoid !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    margin: 0 !important;
+    transform: none !important;
+    display: grid !important;
+    grid-template-columns: 1.55fr 1fr !important;
+    grid-template-rows: 1fr !important;
+    overflow: hidden !important;
+    color: #231912 !important;
+  }
+  /* Disable decorative pseudo-elements that obscure colors in print */
+  .card::before, .card::after { display: none !important; }
+
+  .card .left {
+    padding: 0.18in 0.14in 0.16in 0.2in !important;
+    background: #f4ead5 !important;
+    background-image: none !important;
+    border: none !important;
+    border-top: none !important;
+    border-left: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    overflow: hidden !important;
+  }
+  .card .right {
+    padding: 0.14in 0.1in !important;
+    background: #ebe0c4 !important;
+    background-image: none !important;
+    border-left: 0.5pt dashed #8a6d45 !important;
+    border-top: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 0.04in !important;
+    overflow: hidden !important;
+  }
+
+  .card .eyebrow {
+    font-size: 5pt !important;
+    margin-bottom: 0.06in !important;
+    color: #7a1e2a !important;
+    letter-spacing: 0.25em !important;
+  }
+  .card .eyebrow::after { background: #8a6d45 !important; }
+  .card .name {
+    font-size: 15pt !important;
+    line-height: 1 !important;
+    color: #231912 !important;
+  }
+  .card .name em { color: #7a1e2a !important; }
+  .card .name .pre {
+    font-size: 6pt !important;
+    margin-bottom: 0.03in !important;
+    color: #4a3828 !important;
+  }
+  .card .roles {
+    font-size: 7pt !important;
+    line-height: 1.25 !important;
+    gap: 0.025in !important;
+    margin-top: 0.08in !important;
+    color: #4a3828 !important;
+  }
+  .card .roles li { padding-left: 0.1in !important; }
+  .card .roles li::before { font-size: 5.5pt !important; color: #b8893a !important; top: 0 !important; }
+
+  .card .contact-block {
+    font-size: 6pt !important;
+    gap: 0.02in !important;
+    padding-top: 0.06in !important;
+    border-top: 0.5pt solid #8a6d45 !important;
+    color: #4a3828 !important;
+  }
+  .card .contact-block .row { gap: 0.05in !important; }
+  .card .contact-block .row svg { width: 7pt !important; height: 7pt !important; stroke: #7a1e2a !important; }
+  .card .contact-block .row a { color: #231912 !important; }
+
+  .card .crest { font-size: 5.5pt !important; color: #8a6d45 !important; }
+  .card .qr-wrap {
+    padding: 3pt !important;
+    background: #f4ead5 !important;
+    border: 0.5pt solid #8a6d45 !important;
+  }
+  .card .qr-wrap svg,
+  .card .qr-wrap canvas,
+  .card .qr-wrap img { width: 1in !important; height: 1in !important; }
+  .card .qr-caption { font-size: 5pt !important; color: #4a3828 !important; line-height: 1.3 !important; }
+  .card .qr-caption strong { font-size: 5.6pt !important; margin-top: 0.015in !important; color: #7a1e2a !important; }
+  .card .seal { display: none !important; }
+}
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <article class="card" id="card" aria-label="Tarjeta de presentación de Jorge Cardiel Herrera">
+
+    <div class="left">
+      <div>
+        <div class="eyebrow">Tarjeta de presentación</div>
+        <h1 class="name">
+          <span class="pre">Dr.</span>
+          Jorge <em>Cardiel Herrera</em>
+        </h1>
+        <ul class="roles">
+          <li>Profesor — FCPyS &middot; FCA, UNAM</li>
+          <li>Miembro del RC51 Sociocybernetics</li>
+          <li>Clases particulares de alemán</li>
+          <li>Cursos de diseño web con GitHub y LLMs</li>
+        </ul>
+      </div>
+
+      <div class="contact-block">
+        <div class="row">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2"/>
+            <path d="M3 7 L12 13 L21 7"/>
+          </svg>
+          <a href="mailto:jorgecardiel@comunidad.unam.mx">jorgecardiel@comunidad.unam.mx</a>
+        </div>
+        <div class="row">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M3 12 H21"/>
+            <path d="M12 3 C15.5 7 15.5 17 12 21 C8.5 17 8.5 7 12 3 Z"/>
+          </svg>
+          <a href="https://socyb.github.io" target="_blank" rel="noopener">socyb.github.io</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="crest">UNAM &middot; MMXXVI</div>
+      <div class="qr-wrap" id="qrWrap" aria-label="Código QR a socyb.github.io"></div>
+      <div class="qr-caption">
+        Escanea<strong>socyb.github.io</strong>
+      </div>
+      <div class="seal">❦</div>
+    </div>
+
+  </article>
+</div>
+
+<div class="actions">
+  <button type="button" id="downloadBtn" title="Descargar como imagen PNG">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 3 V15"/>
+      <path d="M7 11 L12 16 L17 11"/>
+      <path d="M4 19 H20"/>
+    </svg>
+    Descargar PNG
+  </button>
+  <button type="button" id="printBtn" title="Imprimir tarjeta">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M7 9 V4 H17 V9"/>
+      <rect x="4" y="9" width="16" height="8" rx="1"/>
+      <rect x="7" y="14" width="10" height="6"/>
+    </svg>
+    Imprimir
+  </button>
+  <a href="index.html" title="Volver al sitio">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M15 6 L9 12 L15 18"/>
+    </svg>
+    Volver
+  </a>
+</div>
+
+<div class="foot">
+  <a href="https://socyb.github.io" target="_blank" rel="noopener">socyb.github.io</a>
+</div>
+
+<!-- QR code generator (small, no-deps library) -->
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+<!-- html-to-image — modern, more reliable than html2canvas -->
+<script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.13/dist/html-to-image.min.js"></script>
+
+<script>
+(function () {
+  // ---- Generate QR ----
+  var url = 'https://socyb.github.io';
+  var qr = qrcode(0, 'M');
+  qr.addData(url);
+  qr.make();
+  var svgString = qr.createSvgTag({
+    cellSize: 4,
+    margin: 0,
+    scalable: true
+  });
+  var wrap = document.getElementById('qrWrap');
+  wrap.innerHTML = svgString;
+  var svg = wrap.querySelector('svg');
+  if (svg) {
+    svg.removeAttribute('width');
+    svg.removeAttribute('height');
+    svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    svg.querySelectorAll('rect, path').forEach(function (el) {
+      var fill = el.getAttribute('fill');
+      if (fill && fill.toLowerCase() === '#000000') el.setAttribute('fill', '#231912');
+      if (fill && fill.toLowerCase() === '#ffffff') el.setAttribute('fill', 'transparent');
+    });
+  }
+
+  // ---- Download as PNG ----
+  var btn = document.getElementById('downloadBtn');
+  var originalLabel = btn.innerHTML;
+
+  function setBusy(busy) {
+    btn.disabled = busy;
+    btn.style.opacity = busy ? '0.6' : '1';
+    btn.style.cursor = busy ? 'wait' : 'pointer';
+    if (busy) {
+      btn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/></svg> Generando…';
+    } else {
+      btn.innerHTML = originalLabel;
+    }
+  }
+
+  btn.addEventListener('click', function () {
+    if (typeof htmlToImage === 'undefined' || !htmlToImage.toPng) {
+      alert('No se pudo cargar el módulo de exportación. Revisa tu conexión.');
+      return;
+    }
+    var card = document.getElementById('card');
+    setBusy(true);
+
+    var fontsReady = (document.fonts && document.fonts.ready) || Promise.resolve();
+
+    fontsReady
+      .then(function () {
+        // Small delay to ensure layout is fully painted
+        return new Promise(function (r) { setTimeout(r, 50); });
+      })
+      .then(function () {
+        var rect = card.getBoundingClientRect();
+        return htmlToImage.toPng(card, {
+          pixelRatio: 3,
+          cacheBust: true,
+          width: rect.width,
+          height: rect.height,
+          backgroundColor: null,
+          style: {
+            transform: 'none',
+            margin: '0'
+          }
+        });
+      })
+      .then(function (dataUrl) {
+        var link = document.createElement('a');
+        link.download = 'tarjeta-jorge-cardiel.png';
+        link.href = dataUrl;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        setBusy(false);
+      })
+      .catch(function (err) {
+        console.error('Export failed:', err);
+        setBusy(false);
+        alert('Ocurrió un error al generar la imagen: ' + (err && err.message ? err.message : err));
+      });
+  });
+
+  // ---- Print ----
+  document.getElementById('printBtn').addEventListener('click', function () {
+    window.print();
+  });
+})();
+</script>
+
+</body>
+</html>
