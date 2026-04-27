@@ -999,7 +999,28 @@ strong { color: var(--burgundy-deep); font-weight: 600; }
   .pull p { font-size: 1.3rem; }
   .marginalia { justify-content: stretch; }
   .marginalia .note { max-width: 100%; font-size: 1.05rem; }
-  .masthead { font-size: 0.74rem; }
+  .masthead {
+    justify-content: center;
+    align-items: baseline;
+    text-align: center;
+    gap: 0.35rem 1.1rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    padding: 0.85rem 0 0.7rem;
+  }
+  .masthead > span { white-space: nowrap; }
+  /* Force the long middle item ("Docencia · Sociocibernética · Web") onto its own row, centered below */
+  .masthead > span:nth-child(2) {
+    order: 2;
+    flex-basis: 100%;
+    text-align: center;
+  }
+  /* Subtle separator between MMXXVI and FCA · UNAM on row 1 */
+  .masthead .folio::after {
+    content: '·';
+    color: var(--rule);
+    margin-left: 1.1rem;
+  }
 }
 </style>
 </head>
