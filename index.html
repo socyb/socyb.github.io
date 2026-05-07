@@ -830,6 +830,58 @@ strong { color: var(--burgundy-deep); font-weight: 600; }
   transform: translate(2px, -2px) rotate(-8deg);
 }
 
+/* ===== CV DIALOG (emerging frame) ===== */
+dialog.cv-dialog {
+  border: none;
+  padding: 0;
+  background: transparent;
+  width: 96vw;
+  height: 96vh;
+  max-width: 96vw;
+  max-height: 96vh;
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  overflow: visible;
+}
+dialog.cv-dialog::backdrop {
+  background: rgba(35, 25, 18, 0.65);
+  backdrop-filter: blur(3px);
+}
+dialog.cv-dialog[open] { animation: bioFadeIn 0.25s ease-out; }
+.cv-frame {
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: #cfc4ad;
+  display: block;
+}
+.cv-close {
+  position: absolute;
+  top: -0.6rem;
+  right: -0.6rem;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  color: var(--ink-soft);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.05rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 2;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(35,25,18,0.25);
+}
+.cv-close:hover {
+  background: var(--burgundy);
+  color: var(--paper);
+  border-color: var(--burgundy);
+  transform: rotate(90deg);
+}
+
 /* ===== COLOPHON ===== */
 .colophon {
   margin-top: 2.5rem;
@@ -1114,6 +1166,16 @@ strong { color: var(--burgundy-deep); font-weight: 600; }
         </div>
       </article>
 
+      <article class="gather-card">
+        <div class="icon">◐</div>
+        <h4>Sociocibernética crítica</h4>
+        <div class="attrib">Ponencia &middot; Seminario CISAN UNAM</div>
+        <p>Grabación y materiales de la ponencia que presenté en el seminario de sociocibernética crítica coordinado por el Dr. Juan Carlos Barrón Pastor en el CISAN.</p>
+        <div class="links">
+          <a href="https://kyberkritik.github.io/sociocibernetica" target="_blank" rel="noopener">ver ponencia →</a>
+        </div>
+      </article>
+
       <article class="gather-card placeholder">
         <span>Próximamente —<br>nuevo repositorio</span>
       </article>
@@ -1141,6 +1203,16 @@ strong { color: var(--burgundy-deep); font-weight: 600; }
         </svg>
         Tarjeta de presentación
       </a>
+      <button type="button" class="card-link" id="cvOpen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M7 3 H15 L19 7 V21 H7 Z"/>
+          <path d="M15 3 V7 H19"/>
+          <line x1="9.5" y1="12" x2="16.5" y2="12"/>
+          <line x1="9.5" y1="15" x2="16.5" y2="15"/>
+          <line x1="9.5" y1="18" x2="14" y2="18"/>
+        </svg>
+        Curriculum Vitae
+      </button>
       <details class="contact">
         <summary>
           <svg class="quill" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -1182,6 +1254,12 @@ strong { color: var(--burgundy-deep); font-weight: 600; }
     <div>Jorge Cardiel &middot; Ciudad de México &middot; MMXXVI</div>
     <span class="pig">«La primera regla y la más fundamental consiste en considerar los hechos sociales como cosas.» — Émile Durkheim</span>
   </footer>
+
+  <!-- CV DIALOG (emerging frame) -->
+  <dialog class="cv-dialog" id="cvDialog" aria-label="Curriculum Vitae">
+    <button type="button" class="cv-close" id="cvClose" aria-label="Cerrar">×</button>
+    <iframe class="cv-frame" id="cvFrame" title="Curriculum Vitae" loading="lazy"></iframe>
+  </dialog>
 
   <!-- BIO DIALOG -->
   <dialog class="bio" id="bioDialog" aria-labelledby="bioTitle">
@@ -1240,6 +1318,29 @@ strong { color: var(--burgundy-deep); font-weight: 600; }
     var inside = e.clientY >= rect.top && e.clientY <= rect.bottom
               && e.clientX >= rect.left && e.clientX <= rect.right;
     if (!inside) dialog.close();
+  });
+})();
+(function () {
+  var cvDialog = document.getElementById('cvDialog');
+  var cvOpen = document.getElementById('cvOpen');
+  var cvClose = document.getElementById('cvClose');
+  var cvFrame = document.getElementById('cvFrame');
+  if (!cvDialog || !cvOpen) return;
+
+  cvOpen.addEventListener('click', function () {
+    if (!cvFrame.src) cvFrame.src = 'cv.html';
+    if (typeof cvDialog.showModal === 'function') {
+      cvDialog.showModal();
+    } else {
+      cvDialog.setAttribute('open', '');
+    }
+  });
+  cvClose.addEventListener('click', function () { cvDialog.close(); });
+  cvDialog.addEventListener('click', function (e) {
+    var rect = cvFrame.getBoundingClientRect();
+    var inside = e.clientY >= rect.top && e.clientY <= rect.bottom
+              && e.clientX >= rect.left && e.clientX <= rect.right;
+    if (!inside) cvDialog.close();
   });
 })();
 </script>

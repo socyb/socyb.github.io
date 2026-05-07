@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Jorge Cardiel Herrera — Curriculum Vitae</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper: #f4ead5;
+  --paper-deep: #ebe0c4;
+  --ink: #231912;
+  --ink-soft: #4a3828;
+  --burgundy: #7a1e2a;
+  --burgundy-deep: #5a1620;
+  --green: #2d4a2b;
+  --gold: #b8893a;
+  --gold-soft: #d4ab5a;
+  --rule: #8a6d45;
+}
+
+@page {
+  size: letter;
+  margin: 0;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  font-family: 'Crimson Pro', 'Iowan Old Style', Georgia, serif;
+  background: #cfc4ad;
+  color: var(--ink);
+  font-size: 10.5pt;
+  line-height: 1.4;
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0, "dlig" 0, "clig" 0;
+  -webkit-font-feature-settings: "liga" 0, "dlig" 0, "clig" 0;
+}
+* { font-variant-ligatures: none !important; }
+
+/* ===== DECK (responsive container for the two pages) ===== */
+.cv-deck {
+  display: flex;
+  gap: 0.6rem;
+  padding: 0.6rem;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.page {
+  width: 8.5in;
+  height: 11in;
+  padding: 0.4in 0.5in;
+  background: var(--paper);
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(184, 137, 58, 0.06) 0%, transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(122, 30, 42, 0.05) 0%, transparent 45%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(74, 56, 40, 0.018) 2px,
+      rgba(74, 56, 40, 0.018) 4px
+    );
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+  flex-shrink: 0;
+  box-shadow: 0 6px 24px rgba(35,25,18,0.18), 0 1px 3px rgba(35,25,18,0.12);
+}
+.page:last-child { page-break-after: auto; }
+.page > * { position: relative; z-index: 1; }
+
+/* ===== Landscape — two pages side by side, scaled to fit height/half-width ===== */
+@media (orientation: landscape) {
+  .cv-deck { flex-direction: row; align-items: center; }
+  .page {
+    --sx: calc((50vw - 0.9rem) / 8.5in);
+    --sy: calc((100vh - 1.2rem) / 11in);
+    --s: min(var(--sx), var(--sy));
+    zoom: var(--s);
+  }
+  /* Fallback for browsers without zoom support: use transform + negative margins */
+  @supports not (zoom: 1) {
+    .page {
+      transform: scale(var(--s));
+      transform-origin: top left;
+      margin-right: calc((var(--s) - 1) * 8.5in);
+      margin-bottom: calc((var(--s) - 1) * 11in);
+    }
+  }
+}
+
+/* ===== Portrait — single column, fit page to viewport width, scroll vertically ===== */
+@media (orientation: portrait) {
+  .cv-deck { flex-direction: column; align-items: center; gap: 0.8rem; }
+  .page {
+    --s: calc((100vw - 1.2rem) / 8.5in);
+    zoom: var(--s);
+  }
+  @supports not (zoom: 1) {
+    .page {
+      transform: scale(var(--s));
+      transform-origin: top left;
+      margin-right: calc((var(--s) - 1) * 8.5in);
+      margin-bottom: calc((var(--s) - 1) * 11in + 0.8rem);
+    }
+  }
+}
+
+a { color: var(--burgundy); text-decoration: none; border-bottom: 1px solid rgba(122,30,42,0.3); }
+
+/* ===== MASTHEAD ===== */
+.masthead {
+  border-top: 3px double var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding: 6px 0 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 7.5pt;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.masthead .folio { color: var(--burgundy); font-weight: 700; }
+
+/* ===== TITLE BLOCK ===== */
+.title-block {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.1rem;
+  align-items: end;
+  padding: 18px 0 14px;
+  border-bottom: 1px solid var(--rule);
+}
+.name-line {
+  font-family: 'Fraunces', 'Big Caslon', 'Hoefler Text', Georgia, serif;
+  font-weight: 600;
+  font-size: 32pt;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.name-line .doctor {
+  display: block;
+  font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 8pt;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--burgundy);
+  margin-bottom: 4px;
+}
+.role-line {
+  font-family: 'Fraunces', 'Big Caslon', 'Hoefler Text', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 13pt;
+  color: var(--ink-soft);
+  margin-top: 6px;
+  letter-spacing: 0.01em;
+}
+.role-line .ornament { color: var(--gold); margin: 0 6px; font-style: normal; }
+
+/* QR card */
+.qr-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 10px 6px;
+  border: 1px solid var(--rule);
+  background: var(--paper-deep);
+  border-radius: 3px;
+  position: relative;
+}
+.qr-card::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 1px solid var(--rule);
+  opacity: 0.4;
+  border-radius: 1px;
+  pointer-events: none;
+}
+.qr-card svg { display: block; width: 78px; height: 78px; }
+.qr-card .qr-label {
+  font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 6.5pt;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--burgundy);
+  font-weight: 700;
+}
+
+/* ===== CONTACT BAR ===== */
+.contact-bar {
+  font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 8.2pt;
+  letter-spacing: 0.05em;
+  padding: 8px 0 10px;
+  border-bottom: 3px double var(--ink);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  color: var(--ink-soft);
+  margin-bottom: 14px;
+}
+.contact-bar .item { display: inline-flex; align-items: center; gap: 6px; }
+.contact-bar .glyph { color: var(--gold); font-family: 'Fraunces', 'Big Caslon', 'Hoefler Text', Georgia, serif; font-size: 11pt; line-height: 0; }
+
+/* ===== SECTION HEADINGS ===== */
+.section { margin-bottom: 7px; }
+.section h2 {
+  font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 8pt;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--burgundy);
+  padding-bottom: 3px;
+  margin-bottom: 7px;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.section h2 .roman {
+  font-family: 'Fraunces', 'Big Caslon', 'Hoefler Text', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 9pt;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  text-transform: none;
+}
+
+/* ===== PERFIL ===== */
+.perfil p {
+  font-family: 'Crimson Pro', 'Iowan Old Style', Georgia, serif;
+  font-size: 11pt;
+  line-height: 1.5;
+  color: var(--ink);
+  text-align: justify;
+}
+.perfil strong { color: var(--burgundy-deep); font-weight: 600; }
+
+/* ===== LÍNEAS (chips) ===== */
+.lineas {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.linea-chip {
+  border: 1px solid var(--rule);
+  background: var(--paper-deep);
+  padding: 8px 6px;
+  text-align: center;
+  border-radius: 3px;
+  position: relative;
+}
+.linea-chip::after {
+  content: ''; position: absolute; inset: 2px;
+  border: 1px dotted var(--rule); opacity: 0.35; pointer-events: none;
+}
+.linea-chip .ornament {
+  font-family: 'Fraunces', 'Big Caslon', 'Hoefler Text', Georgia, serif;
+  font-size: 14pt;
+  color: var(--burgundy);
+  display: block;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+.linea-chip .label {
+  font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 7.2pt;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+
+/* ===== TWO COL ===== */
+.cols-2 { column-count: 2; column-gap: 18px; column-rule: 1px solid var(--rule); }
+.cols-2 .item { break-inside: avoid; margin-bottom: 8px; }
+
+/* ===== ACTUAL ITEM ===== */
+.actual-list { list-style: none; }
+.actual-list li {
+  position: relative;
+  padding: 4px 0 4px 16px;
+  border-bottom: 1px dotted var(--rule);
+  font-size: 10pt;
+  line-height: 1.42;
+}
+.actual-list li:last-child { border-bottom: none; }
+.actual-list li::before {
+  content: '◆';
+  position: absolute; left: 0; top: 4px;
+  color: var(--gold);
+  font-size: 7pt;
+}
+.actual-list strong { font-family: 'Fraunces', 'Big Caslon', 'Hoefler Text', Georgia, serif; font-weight: 600; color: var(--burgundy-deep); }
+.actual-list em { color: var(--ink-soft); }
+
+/* ===== FORMACIÓN ===== */
+.formacion .grado {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 12px;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.formacion .grado:last-child { border-bottom: none; }
+.formacion .year {
+  font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 7.5pt;
+  font-weight: 700;
+  color: var(--burgundy);
+  letter-spacing: 0.05em;
+  padding-top: 3px;
+}
+.formacion .grado-titulo {
+  font-family: 'Fraunces', 'Big Caslon', 'Hoefler Text', Georgia, serif;
+  font-weight: 600;
+  font-size: 10.5pt;
+  color: var(--ink);
+  line-height: 1.25;
+}
+.formacion .grado-meta {
+  font-size: 9.5pt;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+.formacion .honor {
+  display: inline-block;
+  font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 6.8pt;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--burgundy);
+  border: 1px solid var(--burgundy);
+  padding: 1px 6px;
+  border-radius: 2px;
+  margin-left: 6px;
+  font-style: normal;
+  vertical-align: middle;
+}
+
+/* ===== PUB / EVENT LIST ===== */
+.pub-list, .event-list { list-style: none; }
+.pub-list li, .event-list li {
+  padding: 2px 0 2px 14px;
+  position: relative;
+  font-size: 9.2pt;
+  line-height: 1.34;
+  border-bottom: 1px dotted rgba(138,109,69,0.3);
+}
+.pub-list li:last-child, .event-list li:last-child { border-bottom: none; }
+.pub-list li::before, .event-list li::before {
+  content: '»';
+  position: absolute; left: 0; top: 3px;
+  color: var(--gold);
+  font-family: 'Fraunces', 'Big Caslon', 'Hoefler Text', Georgia, serif;
+  font-weight: 700;
+}
+.pub-list em, .event-list em { color: var(--burgundy-deep); }
+.pub-list .year, .event-list .year {
+  font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 8pt;
+  color: var(--burgundy);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+/* ===== BLOCK ===== */
+.block {
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 8px 10px;
+  position: relative;
+  font-size: 9.5pt;
+  line-height: 1.45;
+}
+.block::after {
+  content: ''; position: absolute; inset: 2px;
+  border: 1px solid var(--rule); opacity: 0.35;
+  border-radius: 2px; pointer-events: none;
+}
+.block strong { font-family: 'Fraunces', 'Big Caslon', 'Hoefler Text', Georgia, serif; color: var(--burgundy-deep); }
+
+/* ===== FOOTER ===== */
+.colofon {
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 3px double var(--ink);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 7.5pt;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.colofon .url { color: var(--burgundy); font-weight: 700; }
+
+/* ===== INLINE ORNAMENTS ===== */
+.ornament-rule {
+  text-align: center;
+  font-family: 'Fraunces', 'Big Caslon', 'Hoefler Text', Georgia, serif;
+  color: var(--gold);
+  letter-spacing: 1.4em;
+  font-size: 12pt;
+  margin: 8px 0 10px 16px;
+  line-height: 1;
+}
+
+/* ===== Distinciones row ===== */
+.dist-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.dist-card {
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 8px 10px;
+  background: var(--paper-deep);
+  font-size: 10pt;
+  line-height: 1.35;
+}
+.dist-card .nombre {
+  font-family: 'Fraunces', 'Big Caslon', 'Hoefler Text', Georgia, serif;
+  font-weight: 600;
+  color: var(--burgundy-deep);
+  font-size: 10.8pt;
+}
+.dist-card .meta {
+  font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 7.5pt;
+  color: var(--ink-soft);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* ===== Idiomas ===== */
+.idiomas-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+.idioma {
+  text-align: center;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 4px 4px;
+  background: var(--paper-deep);
+}
+.idioma .lang {
+  font-family: 'Fraunces', 'Big Caslon', 'Hoefler Text', Georgia, serif;
+  font-weight: 600;
+  font-size: 11pt;
+  color: var(--burgundy-deep);
+  display: block;
+}
+.idioma .level {
+  font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 7.4pt;
+  color: var(--ink-soft);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* TIC banner */
+.tic-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 7px 12px;
+  border: 1px solid var(--rule);
+  background: var(--paper-deep);
+  border-radius: 3px;
+  position: relative;
+}
+.tic-banner::after {
+  content: ''; position: absolute; inset: 2px;
+  border: 1px dotted var(--rule); opacity: 0.35; pointer-events: none;
+}
+.tic-banner .tic-orn {
+  font-family: 'Fraunces', 'Big Caslon', 'Hoefler Text', Georgia, serif;
+  font-size: 18pt;
+  color: var(--burgundy);
+  line-height: 1;
+}
+.tic-banner .tic-text {
+  font-family: 'Crimson Pro', 'Iowan Old Style', Georgia, serif;
+  font-size: 11pt;
+  color: var(--ink);
+  letter-spacing: 0.01em;
+}
+.tic-banner .tic-text strong {
+  font-family: 'Fraunces', 'Big Caslon', 'Hoefler Text', Georgia, serif;
+  font-weight: 600;
+  color: var(--burgundy-deep);
+}
+
+/* QR small footer */
+.foot-qr {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px;
+  border: 1px solid var(--rule);
+  background: var(--paper-deep);
+  border-radius: 3px;
+  margin-top: 8px;
+}
+.foot-qr svg { width: 52px; height: 52px; flex-shrink: 0; }
+.foot-qr .text { flex: 1; }
+.foot-qr .text .l1 {
+  font-family: 'Fraunces', 'Big Caslon', 'Hoefler Text', Georgia, serif;
+  font-style: italic;
+  font-size: 10.5pt;
+  color: var(--ink);
+  line-height: 1.25;
+}
+.foot-qr .text .l2 {
+  font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 9pt;
+  color: var(--burgundy);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-top: 3px;
+}
+
+/* small-caps utility */
+.smc {
+  font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 7.2pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* Print: restore single-column page-by-page layout */
+@media print {
+  .cv-deck { display: block; padding: 0; min-height: 0; }
+  .page { zoom: 1; transform: none; margin: 0 auto; box-shadow: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="cv-deck">
+
+<!-- ========================== PAGE 1 ========================== -->
+<section class="page">
+
+  <header class="masthead">
+    <span class="folio">№ I</span>
+    <span>Curriculum Vitae · UNAM</span>
+    <span>Ciudad de México · MMXXVI</span>
+  </header>
+
+  <div class="title-block">
+    <div>
+      <h1 class="name-line">
+        <span class="doctor">Dr. — Profesor e investigador</span>
+        Jorge <em style="font-style: italic; font-weight: 400; color: var(--burgundy);">Cardiel Herrera</em>
+      </h1>
+      <p class="role-line">
+        Sociólogo <span class="ornament">◐</span> Educador <span class="ornament">❦</span> Constructor digital
+      </p>
+    </div>
+    <div class="qr-card">
+      <svg xmlns="http://www.w3.org/2000/svg" width="78" height="78" viewBox="0 0 290 290" class="segno"><path transform="scale(10)" class="qrline" stroke="#231912" d="M0 0.5h7m5 0h1m1 0h1m3 0h3m1 0h7m-29 1h1m5 0h1m1 0h1m5 0h1m2 0h3m2 0h1m5 0h1m-29 1h1m1 0h3m1 0h1m2 0h3m1 0h2m1 0h5m1 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m4 0h1m1 0h4m1 0h2m2 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m2 0h2m4 0h2m5 0h1m1 0h3m1 0h1m-29 1h1m5 0h1m1 0h6m1 0h1m2 0h2m2 0h1m5 0h1m-29 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-21 1h1m1 0h1m1 0h2m1 0h1m1 0h1m1 0h2m-17 1h4m3 0h1m2 0h1m1 0h1m1 0h1m1 0h1m1 0h2m3 0h1m-25 1h2m3 0h3m4 0h4m2 0h4m2 0h2m-29 1h1m1 0h1m2 0h4m1 0h1m1 0h1m3 0h3m1 0h2m1 0h1m2 0h1m1 0h1m-29 1h1m1 0h1m4 0h5m2 0h2m2 0h1m2 0h1m1 0h3m1 0h2m-23 1h2m2 0h1m2 0h1m2 0h1m3 0h1m2 0h1m1 0h1m2 0h1m-28 1h5m2 0h4m1 0h4m1 0h1m3 0h1m1 0h1m1 0h1m1 0h1m-29 1h4m1 0h3m4 0h1m1 0h2m4 0h1m1 0h1m1 0h1m2 0h2m-29 1h2m1 0h2m3 0h1m1 0h2m3 0h3m1 0h1m2 0h2m1 0h1m1 0h1m-28 1h1m1 0h1m3 0h1m4 0h3m5 0h3m-22 1h2m1 0h3m1 0h4m5 0h1m5 0h3m1 0h1m1 0h1m-27 1h2m1 0h3m5 0h1m1 0h1m1 0h1m5 0h1m1 0h2m1 0h1m-25 1h1m2 0h2m7 0h1m1 0h3m4 0h1m-26 1h3m3 0h1m1 0h1m1 0h1m3 0h1m5 0h6m1 0h1m-20 1h4m2 0h1m2 0h2m1 0h1m3 0h1m1 0h1m1 0h1m-29 1h7m1 0h1m2 0h4m2 0h4m1 0h1m1 0h1m3 0h1m-29 1h1m5 0h1m1 0h1m2 0h1m2 0h2m3 0h2m3 0h2m2 0h1m-29 1h1m1 0h3m1 0h1m1 0h4m2 0h1m1 0h1m1 0h7m3 0h1m-29 1h1m1 0h3m1 0h1m2 0h1m2 0h1m1 0h1m1 0h1m1 0h1m4 0h1m1 0h1m1 0h1m-28 1h1m1 0h3m1 0h1m4 0h1m1 0h1m3 0h1m1 0h3m3 0h1m1 0h2m-29 1h1m5 0h1m4 0h1m1 0h2m2 0h1m2 0h4m1 0h1m1 0h2m-29 1h7m6 0h1m1 0h1m1 0h4m1 0h1m1 0h1m2 0h1"/></svg>
+      <span class="qr-label">socyb.github.io</span>
+    </div>
+  </div>
+
+  <div class="contact-bar">
+    <span class="item"><span class="glyph">✉</span> <a href="mailto:jorgecardiel@politicas.unam.mx">jorgecardiel@politicas.unam.mx</a></span>
+    <span class="item"><span class="glyph">⌖</span> <a href="https://socyb.github.io">socyb.github.io</a></span>
+  </div>
+
+  <section class="section perfil">
+    <h2>Perfil <span class="roman">— acerca de</span></h2>
+    <p>Doctor en Ciencias Políticas y Sociales por la <strong>UNAM</strong>. Trabajo en la intersección entre <strong>sociocibernética crítica</strong>, <strong>teoría de sistemas sociales</strong> (Luhmann), <strong>estudios de ciencia, tecnología y sociedad</strong> (CTS) y <strong>estudios globales</strong>. Combino docencia universitaria, investigación, diseño curricular, edición académica y desarrollo de recursos digitales abiertos para la enseñanza. Mi enfoque actual articula <em>inteligencia artificial y sociedad</em>, gobernanza digital, riesgo y poder en sistemas complejos.</p>
+  </section>
+
+  <section class="section">
+    <h2>Líneas de investigación <span class="roman">— focos de trabajo</span></h2>
+    <div class="lineas">
+      <div class="linea-chip">
+        <span class="ornament">◐</span>
+        <span class="label">Sociocibernética<br>Crítica</span>
+      </div>
+      <div class="linea-chip">
+        <span class="ornament">❦</span>
+        <span class="label">Teoría de<br>Sistemas Sociales</span>
+      </div>
+      <div class="linea-chip">
+        <span class="ornament">◆</span>
+        <span class="label">Ciencia, Tecnología<br>y Sociedad</span>
+      </div>
+      <div class="linea-chip">
+        <span class="ornament">⌖</span>
+        <span class="label">Estudios<br>Globales</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Posición actual <span class="roman">— labor docente y académica vigente</span></h2>
+    <ul class="actual-list">
+      <li><strong>Profesor de Asignatura</strong> — Facultad de Contaduría y Administración (FCA), UNAM. Licenciatura en Negocios Internacionales. Asignaturas: <em>Geopolítica Internacional Aplicada a los Negocios Internacionales</em>, <em>Globalización y Empleo</em>, <em>Mercados Emergentes</em>, <em>Seminario de Negocios Internacionales II</em>.</li>
+      <li><strong>Profesor de Asignatura</strong> — Facultad de Ciencias Políticas y Sociales (FCPyS, SUAyED), UNAM. Asignatura: <em>Estado, sociedad y derecho</em> (desde 2021).</li>
+      <li><strong>Editor del <em>Journal of Sociocybernetics</em></strong> y <strong>Tesorero del Comité de Investigación RC51 Sociocybernetics</strong> de la Asociación Internacional de Sociología (ISA).</li>
+      <li><strong>Coordinador académico</strong> del Seminario de Sociocibernética Crítica del Dr. Juan Carlos Barrón Pastor — CISAN, UNAM.</li>
+      <li><strong>Profesor particular de alemán</strong> — clases individuales de lengua alemana (desde 2022).</li>
+      <li><strong>Desarrollador de sitios web</strong> — diseño y construcción de páginas para docencia, investigación y proyectos académicos abiertos.</li>
+    </ul>
+  </section>
+
+  <section class="section formacion">
+    <h2>Formación académica <span class="roman">— grados obtenidos</span></h2>
+    <div class="grado">
+      <div class="year">2015<br>2019</div>
+      <div>
+        <div class="grado-titulo">Doctorado en Ciencias Políticas y Sociales <span class="honor">Mención honorífica</span></div>
+        <div class="grado-meta">Universidad Nacional Autónoma de México · Facultad de Ciencias Políticas y Sociales</div>
+      </div>
+    </div>
+    <div class="grado">
+      <div class="year">2010<br>2013</div>
+      <div>
+        <div class="grado-titulo">Maestría en Arte Moderno y Contemporáneo <span class="honor">Mención honorífica</span></div>
+        <div class="grado-meta">Centro de Cultura Casa Lamm</div>
+      </div>
+    </div>
+    <div class="grado">
+      <div class="year">2004<br>2009</div>
+      <div>
+        <div class="grado-titulo">Licenciatura en Sociología <span class="honor">Mención honorífica</span></div>
+        <div class="grado-meta">Universidad Nacional Autónoma de México · Facultad de Ciencias Políticas y Sociales</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ornament-rule">◐ ❦ ◆ ⌖ ×</div>
+
+</section>
+
+<!-- ========================== PAGE 2 ========================== -->
+<section class="page">
+
+  <header class="masthead">
+    <span class="folio">№ II</span>
+    <span>Cardiel Jorge · Curriculum Vitae</span>
+    <span style="text-transform: none; letter-spacing: 0.05em;">jorgecardiel@politicas.unam.mx</span>
+  </header>
+
+  <section class="section" style="margin-top: 12px;">
+    <h2>Publicaciones <span class="roman">— selección reciente</span></h2>
+    <ul class="pub-list">
+      <li><span class="year">2025</span> · «Los grandes modelos de lenguaje (LLMs) y los usos de la inteligencia artificial. ¿Interlocutores no-humanos o dispositivos de control?», en <em>Las ciencias sociales y los retos para la democracia mexicana</em>, vol. XIX: <em>Tecnologías digitales, cultura, sociedad y política</em>, COMECSO.</li>
+      <li><span class="year">2021</span> · «La actualidad crítica del pensamiento sociocibernético en la TSS de Niklas Luhmann», en <em>Las ciencias sociales en la transición. XV: Trayectorias e innovación en los procesos teórico-metodológicos en las ciencias sociales</em>, COMECSO.</li>
+      <li><span class="year">2018</span> · «Critical Sociocybernetics: Developing the Concept of Dispositif for an Analysis of Steering Processes Between Social Systems» (con J. C. Barrón Pastor), <em>Journal of Sociocybernetics</em> 15(1).</li>
+      <li><span class="year">2016</span> · «Lo tecnológico frente a lo humano en la sociedad contemporánea: la emergencia del dispositivo de la radio en la década de 1920 en México», en <em>La agenda emergente de las ciencias sociales</em>, COMECSO/CUCSH.</li>
+      <li><span class="year">2014</span> · «Integración sinestésica y automatización de Russolo/Ruttman a Carsten Nicolai», <em>Nierika. Revista de Estudios de Arte</em> 5, Universidad Iberoamericana.</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>Difusión académica <span class="roman">— ponencias, paneles y eventos</span></h2>
+    <ul class="event-list">
+      <li><span class="year">OCT 2025</span> · Ponente, <em>La emergencia en los mercados desde una perspectiva sociocibernética</em>, 29° Congreso Internacional de Ciencias Administrativas, FCA-UNAM.</li>
+      <li><span class="year">ABR 2025</span> · Moderador, conferencia magistral <em>Inteligencia Artificial e Industria 4.0</em>, 29ª Semana Académica Interdisciplinaria, FCA-UNAM.</li>
+      <li><span class="year">FEB 2025</span> · Jurado, 13.° concurso de mejores tesis sobre América del Norte, CISAN-UNAM.</li>
+      <li><span class="year">JUN 2024</span> · Ponente, <em>How can Sociocybernetics' epistemology contribute to AI models' explainability?</em>, 18th International Conference on Sociocybernetics, Krakow University of Economics.</li>
+      <li><span class="year">2024</span> · Ponente, <em>La IA en la práctica emergente de los memes en internet</em>, 35° Encuentro AMIC, UPAEP.</li>
+      <li><span class="year">JUL 2023</span> · Organizador de sesión, <em>Sociocybernetic Perspectives on Power</em>, XX ISA World Congress of Sociology, Melbourne.</li>
+    </ul>
+  </section>
+
+  <div class="cols-2">
+
+    <div class="item section">
+      <h2>Diseño curricular</h2>
+      <ul class="event-list">
+        <li><span class="year">2024</span> · Desarrollo de la asignatura <em>Industrias Culturales</em>, SUAyED, FCPyS-UNAM.</li>
+        <li><span class="year">2023</span> · Desarrollo de la unidad <em>Conceptos fundamentales de los sistemas adaptativos complejos</em>, Instituto Rosario Castellanos, SECTEI.</li>
+        <li><span class="year">2022</span> · Desarrollo de la asignatura <em>Historia Mundial I</em>, SUAyED, FCPyS-UNAM.</li>
+        <li><span class="year">2021–23</span> · Diseño y evaluación de reactivos del examen general de conocimientos en Negocios Internacionales, FCA-UNAM.</li>
+      </ul>
+    </div>
+
+    <div class="item section">
+      <h2>Cargos &amp; membresías</h2>
+      <div class="block">
+        <strong>RC51 Sociocybernetics — ISA.</strong> Miembro del comité de investigación · <em>Tesorero (Treasurer)</em> · <strong>Editor</strong> del <em>Journal of Sociocybernetics</em>. Desde 2016.
+      </div>
+    </div>
+
+    <div class="item section">
+      <h2>Distinciones</h2>
+      <div class="dist-row">
+        <div class="dist-card">
+          <div class="nombre">Deutsch Lehren Lernen · Módulos 1–6</div>
+          <div class="meta">Beca Goethe-Institut · formación como profesor de alemán</div>
+        </div>
+        <div class="dist-card">
+          <div class="nombre">Beca DAAD</div>
+          <div class="meta">Humboldt-Univ. Berlin · 2012</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="item section">
+      <h2>Formación continua</h2>
+      <ul class="event-list">
+        <li><span class="year">2024</span> · <em>Educación Basada en Evidencias</em> (métodos cuantitativos), CFPD-UNAM.</li>
+        <li><span class="year">2023</span> · Diplomado en Estudios Sociales y Políticos de la Ciencia y la Tecnología, ENES Mérida.</li>
+        <li><span class="year">2023</span> · <em>Etnografía: métodos, trabajo de campo y escritura etnográfica</em>, CEPHCIS-UNAM.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <section class="section" style="margin-top: 4px;">
+    <h2>Competencias TIC <span class="roman">— herramientas digitales</span></h2>
+    <div class="tic-banner">
+      <span class="tic-orn">⌖</span>
+      <span class="tic-text">Uso de <strong>LLMs</strong>, <strong>GitHub</strong> e <strong>IA agéntica</strong></span>
+    </div>
+  </section>
+
+  <section class="section" style="margin-top: 4px;">
+    <h2>Idiomas <span class="roman">— competencias lingüísticas</span></h2>
+    <div class="idiomas-grid">
+      <div class="idioma">
+        <span class="lang">Alemán</span>
+        <span class="level">C1 · Humboldt-Univ.<br>TestDAF C1</span>
+      </div>
+      <div class="idioma">
+        <span class="lang">Inglés</span>
+        <span class="level">TOEFL 653</span>
+      </div>
+      <div class="idioma">
+        <span class="lang">Francés</span>
+        <span class="level">Lectura</span>
+      </div>
+      <div class="idioma">
+        <span class="lang">Latín</span>
+        <span class="level">Cursos I–II</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="foot-qr">
+    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 290 290" class="segno"><path transform="scale(10)" class="qrline" stroke="#231912" d="M0 0.5h7m5 0h1m1 0h1m3 0h3m1 0h7m-29 1h1m5 0h1m1 0h1m5 0h1m2 0h3m2 0h1m5 0h1m-29 1h1m1 0h3m1 0h1m2 0h3m1 0h2m1 0h5m1 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m4 0h1m1 0h4m1 0h2m2 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m2 0h2m4 0h2m5 0h1m1 0h3m1 0h1m-29 1h1m5 0h1m1 0h6m1 0h1m2 0h2m2 0h1m5 0h1m-29 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-21 1h1m1 0h1m1 0h2m1 0h1m1 0h1m1 0h2m-17 1h4m3 0h1m2 0h1m1 0h1m1 0h1m1 0h1m1 0h2m3 0h1m-25 1h2m3 0h3m4 0h4m2 0h4m2 0h2m-29 1h1m1 0h1m2 0h4m1 0h1m1 0h1m3 0h3m1 0h2m1 0h1m2 0h1m1 0h1m-29 1h1m1 0h1m4 0h5m2 0h2m2 0h1m2 0h1m1 0h3m1 0h2m-23 1h2m2 0h1m2 0h1m2 0h1m3 0h1m2 0h1m1 0h1m2 0h1m-28 1h5m2 0h4m1 0h4m1 0h1m3 0h1m1 0h1m1 0h1m1 0h1m-29 1h4m1 0h3m4 0h1m1 0h2m4 0h1m1 0h1m1 0h1m2 0h2m-29 1h2m1 0h2m3 0h1m1 0h2m3 0h3m1 0h1m2 0h2m1 0h1m1 0h1m-28 1h1m1 0h1m3 0h1m4 0h3m5 0h3m-22 1h2m1 0h3m1 0h4m5 0h1m5 0h3m1 0h1m1 0h1m-27 1h2m1 0h3m5 0h1m1 0h1m1 0h1m5 0h1m1 0h2m1 0h1m-25 1h1m2 0h2m7 0h1m1 0h3m4 0h1m-26 1h3m3 0h1m1 0h1m1 0h1m3 0h1m5 0h6m1 0h1m-20 1h4m2 0h1m2 0h2m1 0h1m3 0h1m1 0h1m1 0h1m-29 1h7m1 0h1m2 0h4m2 0h4m1 0h1m1 0h1m3 0h1m-29 1h1m5 0h1m1 0h1m2 0h1m2 0h2m3 0h2m3 0h2m2 0h1m-29 1h1m1 0h3m1 0h1m1 0h4m2 0h1m1 0h1m1 0h7m3 0h1m-29 1h1m1 0h3m1 0h1m2 0h1m2 0h1m1 0h1m1 0h1m1 0h1m4 0h1m1 0h1m1 0h1m-28 1h1m1 0h3m1 0h1m4 0h1m1 0h1m3 0h1m1 0h3m3 0h1m1 0h2m-29 1h1m5 0h1m4 0h1m1 0h2m2 0h1m2 0h4m1 0h1m1 0h2m-29 1h7m6 0h1m1 0h1m1 0h4m1 0h1m1 0h1m2 0h1"/></svg>
+    <div class="text">
+      <div class="l1">Sitio personal con cursos abiertos, repositorios de docencia y materiales de investigación.</div>
+      <div class="l2">→ socyb.github.io</div>
+    </div>
+  </div>
+
+</section>
+
+</div><!-- /.cv-deck -->
+
+</body>
+</html>
