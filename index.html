@@ -679,8 +679,6 @@ strong { color: var(--burgundy-deep); font-weight: 600; }
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 2 / 3;
-  object-fit: cover;
   border-radius: 1px;
   background: var(--paper-deep);
 }
@@ -744,6 +742,20 @@ strong { color: var(--burgundy-deep); font-weight: 600; }
   margin: 0;
 }
 .book .contrib .rom { font-style: normal; }
+.book .contrib ol { list-style: none; }
+.book .contrib li { padding: 0.3rem 0; border-bottom: 1px dotted rgba(138, 109, 69, 0.45); }
+.book .contrib li:first-child { padding-top: 0; }
+.book .contrib li:last-child { border-bottom: none; padding-bottom: 0; }
+.book .contrib .meta {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-top: 0.15rem;
+}
+.book .contrib .meta b { color: var(--burgundy); font-weight: 700; }
 .book .links {
   display: flex;
   flex-wrap: wrap;
@@ -1152,6 +1164,7 @@ dialog.cv-dialog[open] { animation: bioFadeIn 0.25s ease-out; }
   .book .attrib { font-size: 0.72rem; }
   .book .contrib .label { font-size: 0.66rem; }
   .book .contrib p { font-size: 1.08rem; }
+  .book .contrib .meta { font-size: 0.66rem; }
   .book .links { font-size: 0.76rem; }
   .marginalia .note { font-size: 1.05rem; max-width: 26rem; }
   .marginalia .note .label { font-size: 0.7rem; }
@@ -1192,7 +1205,13 @@ dialog.cv-dialog[open] { animation: bioFadeIn 0.25s ease-out; }
   .pull p { font-size: 1.3rem; }
   .marginalia { justify-content: stretch; }
   .marginalia .note { max-width: 100%; font-size: 1.05rem; }
-  .book { grid-template-columns: 84px 1fr; gap: 1rem; padding: 1.1rem 1rem; }
+  /* Cover beside the heading; chapter list uses the full card width */
+  .book { grid-template-columns: 84px 1fr; column-gap: 1rem; row-gap: 0; padding: 1.1rem 1rem; }
+  .book > div { display: contents; }
+  .book .cover { grid-row: 1 / span 3; align-self: start; }
+  .book .tag, .book h4, .book .attrib { grid-column: 2; }
+  .book .contrib, .book .links { grid-column: 1 / -1; }
+  .book .contrib { margin-top: 1rem; }
   .book h4 { font-size: 1.05rem; }
   .masthead {
     justify-content: center;
@@ -1270,21 +1289,25 @@ dialog.cv-dialog[open] { animation: bioFadeIn 0.25s ease-out; }
   <section class="books-section">
     <div class="section-label">Publicaciones recientes &middot; 2026</div>
     <h2>Capítulos <em>en libros</em></h2>
-    <p>Dos obras colectivas publicadas este año, en las que participo con un capítulo.</p>
+    <p>Dos obras colectivas publicadas este año en las que participo como autor.</p>
 
     <div class="books">
 
       <article class="book">
         <a class="cover" href="https://brill.com/display/title/75282" target="_blank" rel="noopener">
-          <img src="img/libro-brill-2026.jpg" alt="Portada del libro [PENDIENTE]" loading="lazy" width="300" height="450">
+          <img src="img/libro-brill-2026.jpg" alt="Portada del libro The Systems View of Life: From a Sociocybernetic Point of View" loading="lazy" width="200" height="307">
         </a>
         <div>
-          <span class="tag">Brill &middot; 2026</span>
-          <h4>[PENDIENTE: título del libro]</h4>
-          <div class="attrib">[PENDIENTE: editores]</div>
+          <span class="tag">Brill &middot; 2026 &middot; en inglés</span>
+          <h4>The Systems View of Life <span class="sub">From a Sociocybernetic Point of View</span></h4>
+          <div class="attrib">Bernd R. Hornung &amp; Cor van Dijkum (eds.) &middot; Research Perspectives in Sociocybernetics and Complexity, vol. 4</div>
           <div class="contrib">
-            <span class="label">Mi capítulo</span>
-            <p>«[PENDIENTE: título del capítulo]»</p>
+            <span class="label">Mis capítulos</span>
+            <ol>
+              <li><p>«The Systems View of Life: Strong and Weak Points»</p><span class="meta"><b>Cap. 1</b> &middot; con Bernd R. Hornung &middot; pp. 4–40</span></li>
+              <li><p>«Complexity Theory for the Social World in a Systems View of Life»</p><span class="meta"><b>Cap. 2</b> &middot; con Cor van Dijkum y Niek Lam &middot; pp. 41–71</span></li>
+              <li><p>«Casino Finance: Financialization, Digitalization and <span class="rom">“The Systems View of Life”</span>»</p><span class="meta"><b>Cap. 4</b> &middot; con Raija Koskinen &middot; pp. 107–137</span></li>
+            </ol>
           </div>
           <div class="links">
             <a href="https://brill.com/display/title/75282" target="_blank" rel="noopener">ver libro →</a>
@@ -1294,7 +1317,7 @@ dialog.cv-dialog[open] { animation: bioFadeIn 0.25s ease-out; }
 
       <article class="book">
         <a class="cover" href="https://www.oekom.de/buch/mit-humanoekologie-weiterdenken-und-handeln-9783987265594" target="_blank" rel="noopener">
-          <img src="img/libro-oekom-2026.jpg" alt="Portada del libro Mit Humanökologie weiterdenken und handeln" loading="lazy" width="300" height="450">
+          <img src="img/libro-oekom-2026.jpg" alt="Portada del libro Mit Humanökologie weiterdenken und handeln" loading="lazy" width="400" height="563">
         </a>
         <div>
           <span class="tag">oekom &middot; 2026 &middot; en alemán</span>
