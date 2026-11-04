@@ -516,6 +516,20 @@ a { color: var(--burgundy); text-decoration: none; border-bottom: 1px solid rgba
   color: var(--burgundy-deep);
 }
 
+/* TIC + Idiomas share one row */
+.tic-idiomas {
+  display: grid;
+  grid-template-columns: 0.85fr 2.4fr;
+  gap: 14px;
+  margin-top: 4px;
+}
+.tic-idiomas .section { display: flex; flex-direction: column; margin-bottom: 0; }
+.tic-idiomas .tic-banner, .tic-idiomas .idiomas-grid { flex: 1; }
+.tic-idiomas .idioma { display: flex; flex-direction: column; justify-content: center; }
+.tic-idiomas .idioma .level { letter-spacing: 0.04em; }
+.tic-idiomas .idiomas-grid { grid-template-columns: 1.45fr 1fr 1fr 1fr; }
+.tic-idiomas .tic-banner { gap: 9px; padding: 7px 10px; }
+
 /* QR small footer */
 .foot-qr {
   display: flex;
@@ -675,6 +689,8 @@ a { color: var(--burgundy); text-decoration: none; border-bottom: 1px solid rgba
   <section class="section" style="margin-top: 12px;">
     <h2>Publicaciones <span class="roman">— selección reciente</span></h2>
     <ul class="pub-list">
+      <li><span class="year">2026</span> · «[PENDIENTE: título del capítulo]», en [PENDIENTE: editores] (eds.), <em>[PENDIENTE: título del libro]</em>, Brill.</li>
+      <li><span class="year">2026</span> · «Klimablockaden des Kapitalismus und ›The Systems View of Life‹ von Capra &amp; Luisi», en K.-H. Simon y DGH (eds.), <em>Mit Humanökologie weiterdenken und handeln</em>, oekom.</li>
       <li><span class="year">2025</span> · «Los grandes modelos de lenguaje (LLMs) y los usos de la inteligencia artificial. ¿Interlocutores no-humanos o dispositivos de control?», en <em>Las ciencias sociales y los retos para la democracia mexicana</em>, vol. XIX: <em>Tecnologías digitales, cultura, sociedad y política</em>, COMECSO.</li>
       <li><span class="year">2021</span> · «La actualidad crítica del pensamiento sociocibernético en la TSS de Niklas Luhmann», en <em>Las ciencias sociales en la transición. XV: Trayectorias e innovación en los procesos teórico-metodológicos en las ciencias sociales</em>, COMECSO.</li>
       <li><span class="year">2018</span> · «Critical Sociocybernetics: Developing the Concept of Dispositif for an Analysis of Steering Processes Between Social Systems» (con J. C. Barrón Pastor), <em>Journal of Sociocybernetics</em> 15(1).</li>
@@ -739,15 +755,16 @@ a { color: var(--burgundy); text-decoration: none; border-bottom: 1px solid rgba
 
   </div>
 
-  <section class="section" style="margin-top: 4px;">
-    <h2>Competencias TIC <span class="roman">— herramientas digitales</span></h2>
+  <div class="tic-idiomas">
+  <section class="section">
+    <h2>Competencias TIC</h2>
     <div class="tic-banner">
       <span class="tic-orn">⌖</span>
       <span class="tic-text">Uso de <strong>LLMs</strong>, <strong>GitHub</strong> e <strong>IA agéntica</strong></span>
     </div>
   </section>
 
-  <section class="section" style="margin-top: 4px;">
+  <section class="section">
     <h2>Idiomas <span class="roman">— competencias lingüísticas</span></h2>
     <div class="idiomas-grid">
       <div class="idioma">
@@ -768,6 +785,7 @@ a { color: var(--burgundy); text-decoration: none; border-bottom: 1px solid rgba
       </div>
     </div>
   </section>
+  </div><!-- /.tic-idiomas -->
 
   <div class="foot-qr">
     <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 290 290" class="segno"><path transform="scale(10)" class="qrline" stroke="#231912" d="M0 0.5h7m5 0h1m1 0h1m3 0h3m1 0h7m-29 1h1m5 0h1m1 0h1m5 0h1m2 0h3m2 0h1m5 0h1m-29 1h1m1 0h3m1 0h1m2 0h3m1 0h2m1 0h5m1 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m4 0h1m1 0h4m1 0h2m2 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m2 0h2m4 0h2m5 0h1m1 0h3m1 0h1m-29 1h1m5 0h1m1 0h6m1 0h1m2 0h2m2 0h1m5 0h1m-29 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-21 1h1m1 0h1m1 0h2m1 0h1m1 0h1m1 0h2m-17 1h4m3 0h1m2 0h1m1 0h1m1 0h1m1 0h1m1 0h2m3 0h1m-25 1h2m3 0h3m4 0h4m2 0h4m2 0h2m-29 1h1m1 0h1m2 0h4m1 0h1m1 0h1m3 0h3m1 0h2m1 0h1m2 0h1m1 0h1m-29 1h1m1 0h1m4 0h5m2 0h2m2 0h1m2 0h1m1 0h3m1 0h2m-23 1h2m2 0h1m2 0h1m2 0h1m3 0h1m2 0h1m1 0h1m2 0h1m-28 1h5m2 0h4m1 0h4m1 0h1m3 0h1m1 0h1m1 0h1m1 0h1m-29 1h4m1 0h3m4 0h1m1 0h2m4 0h1m1 0h1m1 0h1m2 0h2m-29 1h2m1 0h2m3 0h1m1 0h2m3 0h3m1 0h1m2 0h2m1 0h1m1 0h1m-28 1h1m1 0h1m3 0h1m4 0h3m5 0h3m-22 1h2m1 0h3m1 0h4m5 0h1m5 0h3m1 0h1m1 0h1m-27 1h2m1 0h3m5 0h1m1 0h1m1 0h1m5 0h1m1 0h2m1 0h1m-25 1h1m2 0h2m7 0h1m1 0h3m4 0h1m-26 1h3m3 0h1m1 0h1m1 0h1m3 0h1m5 0h6m1 0h1m-20 1h4m2 0h1m2 0h2m1 0h1m3 0h1m1 0h1m1 0h1m-29 1h7m1 0h1m2 0h4m2 0h4m1 0h1m1 0h1m3 0h1m-29 1h1m5 0h1m1 0h1m2 0h1m2 0h2m3 0h2m3 0h2m2 0h1m-29 1h1m1 0h3m1 0h1m1 0h4m2 0h1m1 0h1m1 0h7m3 0h1m-29 1h1m1 0h3m1 0h1m2 0h1m2 0h1m1 0h1m1 0h1m1 0h1m4 0h1m1 0h1m1 0h1m-28 1h1m1 0h3m1 0h1m4 0h1m1 0h1m3 0h1m1 0h3m3 0h1m1 0h2m-29 1h1m5 0h1m4 0h1m1 0h2m2 0h1m2 0h4m1 0h1m1 0h2m-29 1h7m6 0h1m1 0h1m1 0h4m1 0h1m1 0h1m2 0h1"/></svg>
