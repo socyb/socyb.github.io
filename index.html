@@ -595,38 +595,6 @@ strong { color: var(--burgundy-deep); font-weight: 600; }
 }
 .gather-card.placeholder:hover { transform: none; box-shadow: none; }
 
-/* ===== MARGINAL NOTE — kyberkritik ===== */
-.marginalia {
-  margin: 1.5rem 0 0;
-  display: flex;
-  justify-content: flex-end;
-}
-.marginalia .note {
-  max-width: 22rem;
-  border-left: 2px solid var(--rule);
-  padding: 0.6rem 0 0.6rem 1.2rem;
-  font-family: 'Fraunces', serif;
-  font-style: italic;
-  font-weight: 300;
-  font-size: 0.95rem;
-  line-height: 1.45;
-  color: var(--ink-soft);
-}
-.marginalia .note .label {
-  display: block;
-  font-family: 'JetBrains Mono', monospace;
-  font-style: normal;
-  font-size: 0.62rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--rule);
-  margin-bottom: 0.5rem;
-}
-.marginalia .note a {
-  color: var(--burgundy);
-  border-bottom: 1px dotted var(--burgundy);
-}
-
 /* ===== BOOKS — capítulos en libros ===== */
 .books-section { margin-top: 1.75rem; }
 .books-section > p {
@@ -1126,7 +1094,6 @@ dialog.cv-dialog[open] { animation: bioFadeIn 0.25s ease-out; }
   .subtitle { margin-top: 0.6rem; }
   .byline { margin-top: 1rem; }
   .ornament { margin: 0.6rem 0; }
-  .marginalia { margin: 1rem 0 0; }
   .featured { margin-top: 0; padding: 1.25rem 1.75rem 1.5rem; }
   .featured p { margin-bottom: 0.9rem; }
   .rule-featured-paralelos { margin: 1.1rem 0; }
@@ -1166,8 +1133,6 @@ dialog.cv-dialog[open] { animation: bioFadeIn 0.25s ease-out; }
   .book .contrib p { font-size: 1.08rem; }
   .book .contrib .meta { font-size: 0.66rem; }
   .book .links { font-size: 0.76rem; }
-  .marginalia .note { font-size: 1.05rem; max-width: 26rem; }
-  .marginalia .note .label { font-size: 0.7rem; }
   .pull p { font-size: 1.55rem; }
   .pull cite { font-size: 0.78rem; }
   .colophon { font-size: 0.8rem; }
@@ -1203,8 +1168,6 @@ dialog.cv-dialog[open] { animation: bioFadeIn 0.25s ease-out; }
   .featured h3 { font-size: 1.65rem; }
   .pull { margin: 2rem -1.25rem; }
   .pull p { font-size: 1.3rem; }
-  .marginalia { justify-content: stretch; }
-  .marginalia .note { max-width: 100%; font-size: 1.05rem; }
   /* Cover beside the heading; chapter list uses the full card width */
   .book { grid-template-columns: 84px 1fr; column-gap: 1rem; row-gap: 0; padding: 1.1rem 1rem; }
   .book > div { display: contents; }
@@ -1276,14 +1239,6 @@ dialog.cv-dialog[open] { animation: bioFadeIn 0.25s ease-out; }
   <section class="bio-text">
     <p class="dropcap">Imparto cursos en la Facultad de Contaduría y Administración y en la Facultad de Ciencias Políticas y Sociales de la <strong>UNAM</strong>, para los cuales desarrollo sitios web que funcionan como cuadernos abiertos: programas, calendarios, lecturas y recursos audiovisuales accesibles a estudiantes y al público interesado. Mi investigación se sitúa en torno a la sociocibernética, los estudios globales y los estudios sobre ciencia tecnología y sociedad. Esta página reúne el archivo de lo que voy publicando.</p>
   </section>
-
-  <!-- MARGINAL NOTE — kyberkritik -->
-  <aside class="marginalia">
-    <div class="note">
-      <span class="label">Nota al margen</span>
-      Fragmentos y <em>Urframes</em> — un Zettelkasten con latencia, al modo de los <em>pasajes</em> benjaminianos — en <a href="https://kyberkritik.github.io" target="_blank" rel="noopener">kyberkritik.github.io</a>.
-    </div>
-  </aside>
 
   <!-- BOOKS — capítulos en libros colectivos -->
   <section class="books-section">
@@ -1473,7 +1428,6 @@ dialog.cv-dialog[open] { animation: bioFadeIn 0.25s ease-out; }
       <a href="https://github.com/kyberkritik" target="_blank" rel="noopener">GitHub</a>
       <a href="https://www.youtube.com/@jorgecardiel" target="_blank" rel="noopener">YouTube · @jorgecardiel</a>
       <a href="https://www.youtube.com/@heautomat" target="_blank" rel="noopener">YouTube · @heautomat</a>
-      <a href="https://kyberkritik.github.io" target="_blank" rel="noopener">Cuaderno de fragmentos</a>
     </div>
     <div>Jorge Cardiel &middot; Ciudad de México &middot; MMXXVI</div>
     <span class="pig">«La primera regla y la más fundamental consiste en considerar los hechos sociales como cosas.» — Émile Durkheim</span>
