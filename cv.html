@@ -568,6 +568,72 @@ a { color: var(--burgundy); text-decoration: none; border-bottom: 1px solid rgba
   color: var(--ink-soft);
 }
 
+/* ===== Phones — reflow pages into a readable single column instead of shrinking them ===== */
+@media screen and (max-width: 760px), screen and (orientation: landscape) and (max-height: 500px) {
+  html, body { font-size: 11pt; }
+  .cv-deck {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 10px;
+  }
+  .page {
+    zoom: 1;
+    transform: none;
+    margin: 0;
+    width: 100%;
+    max-width: 640px;
+    align-self: center;
+    height: auto;
+    padding: 18px 16px 20px;
+    overflow: visible;
+  }
+
+  .masthead { flex-wrap: wrap; gap: 2px 10px; font-size: 7pt; letter-spacing: 0.1em; }
+  .masthead span:nth-child(2) { display: none; }
+
+  .title-block { gap: 10px; padding: 14px 0 12px; align-items: center; }
+  .name-line { font-size: 25pt; }
+  .name-line .doctor { font-size: 7.5pt; letter-spacing: 0.16em; }
+  .role-line { font-size: 11.5pt; }
+  .role-line .ornament { margin: 0 3px; }
+  .qr-card { padding: 6px 7px 5px; }
+  .qr-card svg { width: 60px; height: 60px; }
+  .qr-card .qr-label { font-size: 5.5pt; letter-spacing: 0.08em; }
+
+  .contact-bar { font-size: 8.5pt; gap: 6px 14px; letter-spacing: 0.02em; }
+  .contact-bar a { word-break: break-all; }
+
+  .section { margin-bottom: 14px; }
+  .section h2 { flex-wrap: wrap; gap: 0 8px; font-size: 8.5pt; letter-spacing: 0.16em; }
+
+  .perfil p { font-size: 12pt; text-align: left; }
+
+  .lineas { grid-template-columns: repeat(2, 1fr); }
+  .linea-chip .label { font-size: 7.5pt; }
+
+  .actual-list li { font-size: 11pt; }
+
+  .formacion .grado { grid-template-columns: 40px 1fr; gap: 10px; }
+  .formacion .grado-titulo { font-size: 11.5pt; }
+  .formacion .grado-meta { font-size: 10.5pt; }
+  .formacion .honor { margin: 3px 0 0; }
+
+  .pub-list li, .event-list li { font-size: 10.5pt; line-height: 1.4; padding: 4px 0 4px 14px; }
+  .pub-list li::before, .event-list li::before { top: 5px; }
+
+  .cols-2 { column-count: 1; column-rule: none; }
+  .cols-2 .item { margin-bottom: 14px; }
+  .block { font-size: 10.5pt; }
+
+  .tic-idiomas { grid-template-columns: 1fr; gap: 0; margin-top: 0; }
+  .tic-idiomas .section { margin-bottom: 14px; }
+  .tic-idiomas .idiomas-grid { grid-template-columns: repeat(2, 1fr); }
+  .idioma { padding: 6px 4px; }
+
+  .foot-qr .text .l1 { font-size: 11.5pt; }
+}
+
 /* Print: restore single-column page-by-page layout */
 @media print {
   .cv-deck { display: block; padding: 0; min-height: 0; }
